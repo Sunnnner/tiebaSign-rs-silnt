@@ -1,0 +1,26 @@
+import { Button, GroupBox, LineEdit } from "std-widgets.slint";
+
+export component AppWindow inherits Window {
+    in-out property<string> input-text: "";
+    callback request-increase-value();
+    width: 600px;
+    height: 300px;
+    title: "百度贴吧签到";
+    GroupBox {
+        vertical-stretch: 0;
+        width: 500px;
+        height: 100px;
+        LineEdit {
+            placeholder-text: "请输入BDUSS";
+            edited => {
+                root.input-text = self.text;
+            }
+        }
+        Button {
+            text: "点击签到";
+            clicked => {
+                root.request-increase-value();
+            }
+        }
+    }
+}
